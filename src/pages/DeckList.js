@@ -5,20 +5,22 @@ import { useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
 const myIcon = () => <Icon name="folder" size={30} />;
 
-const DeckList = () => {
+const DeckList = ({ navigation }) => {
   const { decks, deckIds } = useSelector((state) => ({
     decks: state.decks,
     deckIds: Object.keys(state.decks),
   }));
-  console.log(decks);
-  console.log(deckIds);
+
+  const openDeck = (deckId) => {
+    navigation.navigate("Deck Detail", { deckId });
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <View style={{ height: "100%" }}>
           {deckIds.map((deckId) => {
             return (
-              <Card key={deckId} style={styles.card}>
+              <Card key={deckId} style={styles.card} onPress={() => openDeck(deckId)}>
                 <Card.Title title={decks[deckId].title} left={myIcon} style={styles.text} />
                 <Card.Content>
                   <Title style={styles.text}>Questinos</Title>

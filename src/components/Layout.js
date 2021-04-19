@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useDispatch } from "react-redux";
 import DeckList from "../pages/DeckList";
+import DeckDetail from "../pages/DeckDetail";
 import { handleSetDecks } from "../store/actions/decks";
 
 const Stack = createStackNavigator();
@@ -17,6 +18,7 @@ const Layout = () => {
     <NavigationContainer>
       <Stack.Navigator style={{ flex: 1 }}>
         <Stack.Screen name="Home" component={DeckList} />
+        <Stack.Screen name="Deck Detail" component={DeckDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
