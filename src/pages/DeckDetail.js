@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
 const myIcon = () => <Icon name="folder" size={30} />;
 
-const DeckDetail = ({ route: { params } }) => {
+const DeckDetail = ({ navigation, route: { params } }) => {
   const { deckId } = params;
   const { deck } = useSelector(({ decks }) => ({
     deck: decks[deckId],
@@ -25,7 +25,9 @@ const DeckDetail = ({ route: { params } }) => {
             </Card.Content>
             <Card.Actions>
               <Button>Start quiz</Button>
-              <Button>Add question</Button>
+              <Button onPress={() => navigation.navigate("Add Card", { deckId })}>
+                Add question
+              </Button>
             </Card.Actions>
           </Card>
         </View>
