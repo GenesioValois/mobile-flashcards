@@ -50,9 +50,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     backgroundColor: "white",
   },
-  cardActions: {
-    marginVertical: 10,
-  },
   input: {
     fontSize: 16,
     borderBottomColor: "rgb(64,64,64)",
