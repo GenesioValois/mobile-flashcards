@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, SafeAreaView, View, StyleSheet } from "react-native";
+import { Text, ScrollView, SafeAreaView, View, StyleSheet } from "react-native";
 import { Card, Title, Paragraph, IconButton, Colors } from "react-native-paper";
 import { useSelector } from "react-redux";
 
@@ -43,8 +43,11 @@ const StartQuiz = ({ navigation, route: { params } }) => {
           <Card style={styles.card}>
             <Card.Content>
               <Title style={styles.question}>{questions[index].question}</Title>
-              <Paragraph style={styles.text}>{showAnswer ? questions[index].answer : ""}</Paragraph>
+              <Paragraph style={styles.text}>
+                {showAnswer ? `A: ${questions[index].answer}` : ""}
+              </Paragraph>
             </Card.Content>
+            <Text style={styles.counter}>{quiz.total - (index + 1)} remaining</Text>
             <Card.Actions style={styles.actions}>
               <IconButton
                 icon="close-outline"
@@ -81,15 +84,22 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   text: {
+    color: "black",
+    marginTop: 40,
+    marginBottom: 80,
+    alignSelf: "center",
+  },
+  counter: {
+    fontSize: 10,
     alignSelf: "center",
   },
   question: {
     color: "black",
     fontSize: 20,
-    marginVertical: 100,
+    marginTop: 100,
+    marginBottom: 40,
   },
   actions: {
-    marginVertical: 10,
     flexDirection: "row",
     justifyContent: "space-around",
   },
