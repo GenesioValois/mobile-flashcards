@@ -53,17 +53,18 @@ export const getDecks = async () => {
   }
 };
 
-export const saveDeckTitle = async (title) => {
+export const saveDeck = async (title) => {
   const id = generateUID();
+  const deck = {
+    id: id,
+    title: title,
+    questions: [],
+  };
 
   await AsyncStorage.mergeItem(
     STORAGE_KEY,
     JSON.stringify({
-      [id]: {
-        id: id,
-        title: title,
-        questions: [],
-      },
+      [id]: deck,
     })
   );
   return deck;
@@ -84,15 +85,3 @@ export const saveCardToDeck = async (deckId, card) => {
     return card;
   }
 };
-
-export async function removeDeck(deckId) {
-  const results = await AsyncStorage.getItem(STORAGE_KEY);
-  if (results) {
-    const data = JSON.parse(results);
-    delete data[deckId];
-
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    return data;
-  }
-  return {};
-}
