@@ -24,7 +24,9 @@ const DeckDetail = ({ navigation, route: { params } }) => {
               </Paragraph>
             </Card.Content>
             <Card.Actions>
-              <Button>Start quiz</Button>
+              <Button onPress={() => navigation.navigate("Start Quiz", { deckId })}>
+                Start quiz
+              </Button>
               <Button onPress={() => navigation.navigate("Add Card", { deckId })}>
                 Add question
               </Button>
