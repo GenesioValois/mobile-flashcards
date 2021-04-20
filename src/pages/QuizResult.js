@@ -1,11 +1,15 @@
-import React from "react";
-import { Text, ScrollView, SafeAreaView, View, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { ScrollView, SafeAreaView, View, StyleSheet } from "react-native";
 import { Card, Paragraph, Button, Colors } from "react-native-paper";
+import { clearLocalNotification } from "../notification";
 
 const QuizResult = ({ navigation, route: { params } }) => {
   const { correct, total, deckId } = params;
   const result = ((correct / total) * 100).toFixed(1);
   const color = result > 70 ? Colors.green500 : result > 50 ? Colors.blue300 : Colors.red400;
+  useEffect(() => {
+    clearLocalNotification();
+  });
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

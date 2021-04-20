@@ -24,7 +24,7 @@ const DeckList = ({ navigation }) => {
               <Card key={deckId} style={styles.card} onPress={() => openDeck(deckId)}>
                 <Card.Title title={decks[deckId].title} left={myIcon} style={styles.text} />
                 <Card.Content>
-                  <Title style={styles.text}>Questinos</Title>
+                  <Title style={styles.text}>Questions</Title>
                   <Paragraph style={styles.text}>
                     This deck contains {decks[deckId].questions.length} question cards
                   </Paragraph>
